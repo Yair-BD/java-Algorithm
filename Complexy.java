@@ -39,6 +39,6 @@ public class Complexy {
 
         int[] c = new int[] {-1,1,0};
 
-        System.out.println(sumOfI(c));
+        System.out.println((c));
     }
 }

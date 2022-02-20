@@ -7,6 +7,7 @@ public class Recursion {
             return 1;           
         if (i < 0 || j < 0 ||list.length -1 > i || list[i].length -1 > j || list[i][j] <= 0)
             return 0;
+
         int temp = list[i][j];
         list[i][j] = -1; // Marking the number to void duplicates
         int count = howManyPath(list, i + temp, j) + howManyPath(list, i - temp, j) + 
@@ -57,19 +58,33 @@ public class Recursion {
 
     }
     public static int kindOfSum(int[] s1, int k, int num){
-        return culculate(s1, k, num, -1)
+        return culculate(s1, k, num, -1);
     }
-    private int culculate(int[] s1, int finalLenOfNeck, int timeOfUse, int index ){
+    private static int culculate(int[] s1, int finalLenOfNeck, int timeOfUse, int index ){
         if ( finalLenOfNeck == 0 && timeOfUse >=0 )
             return 1;
-        if (timeOfUse =< 0 || finalLenOfNeck < 0 || s1.length == i)
+        if ((timeOfUse <= 0 )|| (finalLenOfNeck < 0 )|| (s1.length == index))
             return 0 ;
         else
             return culculate(s1, finalLenOfNeck - s1[index+1], timeOfUse +1, index +1 ) +
-                    culculate(s1 ,finalLenOfNeck - s1[index], timeOfUse +1, index)
+                    culculate(s1 ,finalLenOfNeck - s1[index], timeOfUse +1, index);
     }
+
+    public static boolean threePower(int num){
+        return threePower(num, 0);
+    }
+    private static boolean threePower(int num, int pow){
+        if(num < 0 || num < Math.pow(3, pow))// Bad if
+            return false;
+        if(num == 0)
+            return true;
+  
+        return threePower(num - (int)Math.pow(3, pow), pow + 1) || threePower(num, pow +1);
+
+    }
+
     public static void main(String[] args) {
-    System.out.println(minChanges("sunrday","snurday"));
+    System.out.println(threePower(10));
     }
 }
 
